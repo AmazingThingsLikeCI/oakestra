@@ -6,7 +6,7 @@ on:
     paths:
       - scripts/StartOakestraFull.sh
 jobs:
-  copy-files:
+  update-getstarted-script:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
