@@ -1,23 +1,23 @@
 on:
     push:
-        # branches: [ main ]
+        branches: [ develop ]
         paths:
           - 'scripts/StartOakestraFull.sh'  # Only trigger on changes to this file
 jobs:
-  copy-file:
+  update-startup-script:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Pushes startup script to Oakestra site
+    - name: Push startup script to oakestra.github.io/getstarted
       uses: dmnemec/copy_file_to_another_repo_action@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.OAKESTRA_SITE_REPO_ACCESS_TOKEN }}
       with:
         source_file: 'scripts/StartOakestraFull.sh'
         destination_repo: 'AmazingThingsLikeCI/oakestra.github.io'
-        destination_folder: 'scripts'
+        destination_folder: './getstarted.sh'
         user_email: 'lucapinta@live.it'
         user_name: 'TheDarkPyotr'
         commit_message: 'Yey'
