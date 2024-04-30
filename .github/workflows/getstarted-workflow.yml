@@ -1,6 +1,6 @@
 on:
     push:
-        branches: [ develop ]
+        branches: [ main ]
         paths:
           - 'scripts/StartOakestraFull.sh'  # Only trigger on changes to this file
 jobs:
