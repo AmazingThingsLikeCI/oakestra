@@ -23,10 +23,7 @@ jobs:
                  with:
                    source_file: "getstarted.sh"
                    destination_repo: "AmazingThingsLikeCI/oakestra.github.io"
-                   destination_folder: "" # Omit if destination root
                    user_email: "lucapinta@live.it"
                    user_name: "TheDarkPyotr"
                    commit_message: ${{ github.event.head_commit.message }}
-                   rsync_option: "" # Deletes any files in the 
-                                                  # destination that is not
-                                                  # present in the source 
+                                                 
