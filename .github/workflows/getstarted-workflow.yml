@@ -3,7 +3,6 @@ on:
         # branches: [ main ]
         paths:
           - 'scripts/StartOakestraFull.sh'  # Only trigger on changes to this file
-
 jobs:
   copy-file:
     runs-on: ubuntu-latest
@@ -12,13 +11,12 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Pushes startup script to Oakestra site
-      uses: dmnemec/copy_file_to_another_repo_action@main
+      uses: nkoppel/push-files-to-another-repository@1.1.0
       env:
         API_TOKEN_GITHUB: ${{ secrets.OAKESTRA_SITE_REPO_ACCESS_TOKEN }}
       with:
         source_file: 'scripts/StartOakestraFull.sh'
         destination_repo: 'AmazingThingsLikeCI/oakestra.github.io'
         destination_folder: 'scripts'
-        user_email: 'oakestra@gmail.com'
-        user_name: 'WorkflowBot'
+        user_email: 'lucapinta@live.it'
         commit_message: 'Yey'
