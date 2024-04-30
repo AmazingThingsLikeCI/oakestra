@@ -1,0 +1,29 @@
+name: Update Target File on Change
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/StartOakestraFull.sh'  # Only trigger on changes to this file
+
+jobs:
+  update-file:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check if file changed
+        uses: tj-actions/changed-files@v1
+        with:
+          # Optional: Fail workflow if there are no changes
+          # fail_on_unchanged: true
+          # List of files/globs to check (must match 'on.push.paths')
+          files: 'scripts/StartOakestraFull.sh'
+      - uses: nkoppel/push-files-to-another-repository@v3
+        when: steps.changed-files.outputs.changed  
+        with:
+          source-files: scripts/StartOakestraFull.sh
+          destination-username: OakestraMantainer 
+          destination-repository: oakestra.github.io  
+          destination-branch: develop
+          commit-message: "Updated getstarted.sh startup script"
+          token: ${{ secrets.OAKESTRA_SITE_REPO_ACCESS_TOKEN }}
