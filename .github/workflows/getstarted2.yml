@@ -1,29 +1,27 @@
 name: Update getstarted.sh on oakestra.github.io
 on:
-    workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
-    push:
-        branches: [ main ]
-        paths:
-          - 'scripts/StartOakestraFull.sh'  # Only trigger on changes to this file
-    
+  push:
+    branches:
+      - develop
+    paths:
+      - scripts/StartOakestraFull.sh
 jobs:
-           copy-files:
-             runs-on: ubuntu-latest
-             steps:
-               - name: Checkout
-                 uses: actions/checkout@v3
-               - name: Rename files (optional)
-                 run: |
-                    mv scripts/StartOakestraFull.sh scripts/getstarted.sh
-                    ls -la
-               - name: Push test folder & 1 file
-                 uses: dobbelina/multi_file_bandit@main
-                 env:
-                   API_TOKEN_GITHUB: ${{ secrets.OAKESTRA_SITE_REPO_ACCESS_TOKEN }}
-                 with:
-                   source_file: "scripts/getstarted.sh"
-                   destination_repo: "AmazingThingsLikeCI/oakestra.github.io"
-                   user_email: "lucapinta@live.it"
-                   user_name: "TheDarkPyotr"
-                   commit_message: ${{ github.event.head_commit.message }}
-                                                 
+  copy-files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Rename file (StartOakestraFull.sh -> getstarted.sh)
+        run: |
+          mv scripts/StartOakestraFull.sh scripts/getstarted.sh
+          ls -la
+      - name: Push changes to oakestra.github.io
+        uses: dobbelina/multi_file_bandit@main
+        env:
+          API_TOKEN_GITHUB: '${{ secrets.OAKESTRA_SITE_REPO_ACCESS_TOKEN }}'
+        with:
+          source_file: scripts/getstarted.sh
+          destination_repo: AmazingThingsLikeCI/oakestra.github.io
+          user_email: lucapinta@live.it
+          user_name: TheDarkPyotr
+          commit_message: '${{ github.event.head_commit.message }}'
