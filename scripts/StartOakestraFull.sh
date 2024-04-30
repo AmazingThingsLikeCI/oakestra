@@ -1,5 +1,5 @@
 #!/bin/bash
-echo 🌳 Running Oakestra 1-DOC 
+echo 🌳 Running Oakestra 1-DOC test
 
 #Oakestra branch?
 if [ -z "$OAKESTRA_BRANCH" ]; then
