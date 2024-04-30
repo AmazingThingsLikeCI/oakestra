@@ -2,7 +2,7 @@ name: Update getstarted.sh on oakestra.github.io
 on:
   push:
     branches:
-      - develop
+      - main
     paths:
       - scripts/StartOakestraFull.sh
 jobs:
