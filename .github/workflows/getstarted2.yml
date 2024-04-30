@@ -1,31 +1,31 @@
 name: Update getstarted.sh on oakestra.github.io
-
 on:
-  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
-  push:
-    branches: [ main ]
-    paths:
-        - 'scripts/StartOakestraFull.sh'  # Only trigger on changes to this file
-
+    push:
+        branches: [ main ]
+        paths:
+          - 'scripts/StartOakestraFull.sh'  # Only trigger on changes to this file
+    
 jobs:
-  main:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: sator-imaging/Copy-to-Another-Repository@v1
-        with:
-
-          # required parameters
-          target-filepath: 'scripts/StartOakestraFull.sh'      # file path to copy
-          output-branch: 'main'   # branch name to create pull request
-          output-repo: 'AmazingThingsLikeCI/oakestra.github.io'
-          git-token: ${{ secrets.OAKESTRA_SITE_REPO_ACCESS_TOKEN }}
-          
-          # optional parameters and default values
-          commit-message-prefix: '[actions] '   # followed by source repository and file name
-          output-directory: "${{ github.event.repository.name }}/getstarted.sh"   # copy file into sub directory
-          pr-title: "GitHub Actions: ${{ github.event.repository.name }}"   # followed by source repository and file name
-          pr-message: "${{ github.workflow }} on ${{ github.server_url }}/${{ github.repository }}"   # followed by action repository
-          git-name: "github-actions[bot]"   # your name can be set by ${{ github.actor }}
-          git-email: 'github-actions[bot]@users.noreply.github.com'   # associated user icon is shown in commit page
-
-# {% endraw %}
+           copy-files:
+             runs-on: ubuntu-latest
+             steps:
+               - name: Checkout
+                 uses: actions/checkout@v3
+               - name: Rename files (optional)
+                 run: |
+                    mv scripts/StartOakestraFull.sh scripts/getstarted.sh
+                    mv scripts/getstarted.sh ../
+               - name: Push test folder & 1 file
+                 uses: dobbelina/multi_file_bandit@main
+                 env:
+                   API_TOKEN_GITHUB: ${{ secrets.OAKESTRA_SITE_REPO_ACCESS_TOKEN }}
+                 with:
+                   source_file: "getstarted.sh"
+                   destination_repo: "dobbelina/release-test"
+                   destination_folder: "" # Omit if destination root
+                   user_email: "lucapinta@live.it"
+                   user_name: "TheDarkPyotr"
+                   commit_message: ${{ github.event.head_commit.message }}
+                   rsync_option: "" # Deletes any files in the 
+                                                  # destination that is not
+                                                  # present in the source 
