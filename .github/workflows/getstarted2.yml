@@ -22,7 +22,7 @@ jobs:
                    API_TOKEN_GITHUB: ${{ secrets.OAKESTRA_SITE_REPO_ACCESS_TOKEN }}
                  with:
                    source_file: "getstarted.sh"
-                   destination_repo: "dobbelina/release-test"
+                   destination_repo: "AmazingThingsLikeCI/oakestra.github.io"
                    destination_folder: "" # Omit if destination root
                    user_email: "lucapinta@live.it"
                    user_name: "TheDarkPyotr"
