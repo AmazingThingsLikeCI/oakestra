@@ -14,7 +14,6 @@ jobs:
       - name: Rename file (StartOakestraFull.sh -> getstarted.sh)
         run: |
           mv scripts/StartOakestraFull.sh scripts/getstarted.sh
-          ls -la
       - name: Push changes to oakestra.github.io
         uses: dobbelina/multi_file_bandit@main
         env:
