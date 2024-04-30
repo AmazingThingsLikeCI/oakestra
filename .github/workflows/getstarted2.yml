@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Rename file (StartOakestraFull.sh -> getstarted.sh)
+      - name: Rename script (StartOakestraFull.sh -> getstarted.sh)
         run: |
           mv scripts/StartOakestraFull.sh scripts/getstarted.sh
       - name: Push changes to oakestra.github.io
@@ -21,6 +21,6 @@ jobs:
         with:
           source_file: scripts/getstarted.sh
           destination_repo: AmazingThingsLikeCI/oakestra.github.io
-          user_email: lucapinta@live.it
-          user_name: TheDarkPyotr
+          user_email: $${{ github.event.pusher.email}}
+          user_name: ${{ github.event.pusher.name}}
           commit_message: '${{ github.event.head_commit.message }}'
