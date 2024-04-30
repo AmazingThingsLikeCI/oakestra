@@ -11,7 +11,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Pushes startup script to Oakestra site
-      uses: nkoppel/push-files-to-another-repository@1.1.0
+      uses: dmnemec/copy_file_to_another_repo_action@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.OAKESTRA_SITE_REPO_ACCESS_TOKEN }}
       with:
@@ -19,4 +19,5 @@ jobs:
         destination_repo: 'AmazingThingsLikeCI/oakestra.github.io'
         destination_folder: 'scripts'
         user_email: 'lucapinta@live.it'
+        user_name: 'TheDarkPyotr'
         commit_message: 'Yey'
