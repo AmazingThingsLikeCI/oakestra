@@ -15,13 +15,13 @@ jobs:
                - name: Rename files (optional)
                  run: |
                     mv scripts/StartOakestraFull.sh scripts/getstarted.sh
-                    mv scripts/getstarted.sh ../
+                    ls -la
                - name: Push test folder & 1 file
                  uses: dobbelina/multi_file_bandit@main
                  env:
                    API_TOKEN_GITHUB: ${{ secrets.OAKESTRA_SITE_REPO_ACCESS_TOKEN }}
                  with:
-                   source_file: "getstarted.sh"
+                   source_file: "scripts/getstarted.sh"
                    destination_repo: "AmazingThingsLikeCI/oakestra.github.io"
                    user_email: "lucapinta@live.it"
                    user_name: "TheDarkPyotr"
