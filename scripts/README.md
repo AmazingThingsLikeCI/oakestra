@@ -1,6 +1,6 @@
 # Quick Startup Scripts
 
-## Start Oakestra 1DOC 1
+## Start Oakestra 1DOC 1 test
 
 This script can be used to quickly setup a 1-DOC cluster
 
