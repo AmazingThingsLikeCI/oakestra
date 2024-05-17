@@ -38,18 +38,29 @@ jobs:
           FILTER_REGEX_EXCLUDE: .github/.*
           LINTER_RULES_PATH: .github/linters_rules
           VALIDATE_PYTHON_BLACK: true
-          # PYTHON_BLACK_CONFIG_FILE: 
+          # PYTHON_BLACK_CONFIG_FILE: # Injected settings in Flake8 and isort config
           VALIDATE_PYTHON_FLAKE8: true
-          # PYTHON_FLAKE8_CONFIG_FILE: 
+          PYTHON_FLAKE8_CONFIG_FILE: .flake8
           VALIDATE_PYTHON_ISORT: true
-          # PYTHON_ISORT_CONFIG_FILE: 
-          VALIDATE_SHELL_SHFMT: true
+          PYTHON_ISORT_CONFIG_FILE: .isort.cfg
+          # Shell formatter - Uses https://github.com/patrickvane/shfmt
+          VALIDATE_SHELL_SHFMT: true # Cannot explicitly specify config files
+          # Bash linter & validator
           VALIDATE_BASH: true
           VALIDATE_BASH_EXEC: true
+          # yamlint linter - https://yamllint.readthedocs.io/en/stable/configuration.html
           VALIDATE_YAML: true
-          VALIDATE_GO: true
+          YAML_CONFIG_FILE: .yaml-lint.yml
+          # Validate Go files and Go modules - Uses https://github.com/golangci/golangci-lint
+          VALIDATE_GO: true # No explicit customization provided for Go
           VALIDATE_GO_MODULES: true
+          # Linter for .env files - Uses https://github.com/dotenv-linter/dotenv-linter
           VALIDATE_ENV: true
+          # Validate Dockerfiles with hadolint - https://github.com/hadolint/hadolint?tab=readme-ov-file#configure
           VALIDATE_DOCKERFILE_HADOLINT: true
+          DOCKERFILE_HADOLINT_FILE_NAME: .docker-hadolint.yaml
+          # GitLeaks: discover secrets leaking - https://github.com/gitleaks/gitleaks?tab=readme-ov-file#configuration
+          # VALIDATE_GITLEAKS: true
+          # GITLEAKS_CONFIG_FILE: .gitleaks.toml
           GITHUB_TOKEN: ${{ secrets.LINTER_TOKEN }}
 ...
