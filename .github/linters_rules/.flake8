@@ -1,6 +1,6 @@
 [flake8]
-extend-ignore = E203
-exclude =
-    .git,
-    __pycache__,
-max-complexity = 10
+max-line-length = 100
+extend-ignore = E203,E701
+
+# https://flake8.pycqa.org/en/latest/user/options.html#full-listing-of-options-and-their-descriptions
+# https://github.com/psf/black/blob/main/docs/guides/using_black_with_other_tools.md#flake8
