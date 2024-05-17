@@ -26,12 +26,12 @@ jobs:
 
       - name: Super-linter
         uses: super-linter/super-linter@v6.5.0  # x-release-please-version
-        env: # Refer https://github.com/marketplace/actions/super-linter#configure-super-linter
+        env:
           MULTI_STATUS: true
           LOG_LEVEL: INFO
           IGNORE_GITIGNORED_FILES: true
           VALIDATE_ALL_CODEBASE: true
-          FILTER_REGEX_EXCLUDE: .github/*
+          # FILTER_REGEX_EXCLUDE: .github/*
           # LINTER_RULES_PATH: .github/linters_rules
           VALIDATE_PYTHON_BLACK: true
           # PYTHON_BLACK_CONFIG_FILE: # Injected settings in Flake8 and isort config
@@ -48,7 +48,7 @@ jobs:
           VALIDATE_YAML: true
           # YAML_CONFIG_FILE: .yaml-lint.yml
           # Validate Go files and Go modules - Uses https://github.com/golangci/golangci-lint
-          VALIDATE_GO: true # No explicit customization provided for Go
+          VALIDATE_GO: true
           VALIDATE_GO_MODULES: true
           # Linter for .env files - Uses https://github.com/dotenv-linter/dotenv-linter
           VALIDATE_ENV: true
