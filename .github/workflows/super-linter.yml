@@ -33,11 +33,19 @@ jobs:
           # FILTER_REGEX_EXCLUDE: .github/*
           LINTER_RULES_PATH: .github/linters_rules
           VALIDATE_PYTHON_BLACK: true
-          # PYTHON_BLACK_CONFIG_FILE: # Injected settings in Flake8 and isort config
+          PYTHON_BLACK_CONFIG_FILE: .isort.cfg # Injected settings in Flake8 and isort config
           VALIDATE_PYTHON_FLAKE8: true
           PYTHON_FLAKE8_CONFIG_FILE: .flake8
           VALIDATE_PYTHON_ISORT: true
           PYTHON_ISORT_CONFIG_FILE: .isort.cfg
           VALIDATE_ALL_CODEBASE: true
+           # Validate Go files and Go modules - Uses https://github.com/golangci/golangci-lint
+          VALIDATE_GO_MODULES: true
+          # Validate Dockerfiles with hadolint - https://github.com/hadolint/hadolint?tab=readme-ov-file#configure
+          VALIDATE_DOCKERFILE_HADOLINT: true
+          DOCKERFILE_HADOLINT_FILE_NAME: .docker-hadolint.yaml
+          # yamlint linter - https://yamllint.readthedocs.io/en/stable/configuration.html
+          VALIDATE_YAML: true
+          # YAML_CONFIG_FILE: .yaml-lint.yml
           GITHUB_TOKEN: ${{ secrets.LINTER_TOKEN }}
 ...
