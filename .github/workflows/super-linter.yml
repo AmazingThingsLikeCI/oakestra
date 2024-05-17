@@ -48,8 +48,8 @@ jobs:
           VALIDATE_YAML: true
           YAML_CONFIG_FILE: .yaml-lint.yml
           # Bash linter & validator
-          #VALIDATE_BASH: true
-          #VALIDATE_BASH_EXEC: true
+          VALIDATE_BASH: true
+          VALIDATE_BASH_EXEC: true
           # GitLeaks: discover secrets leaking - https://github.com/gitleaks/gitleaks?tab=readme-ov-file#configuration
           #VALIDATE_GITLEAKS: true
           # GITLEAKS_CONFIG_FILE: .gitleaks.toml
