@@ -39,7 +39,7 @@ jobs:
           VALIDATE_PYTHON_ISORT: true
           PYTHON_ISORT_CONFIG_FILE: .isort.cfg
           VALIDATE_ALL_CODEBASE: true
-           # Validate Go files and Go modules - Uses https://github.com/golangci/golangci-lint
+          # Validate Go files and Go modules - Uses https://github.com/golangci/golangci-lint
           VALIDATE_GO_MODULES: true
           # Validate Dockerfiles with hadolint - https://github.com/hadolint/hadolint?tab=readme-ov-file#configure
           VALIDATE_DOCKERFILE_HADOLINT: true
@@ -50,7 +50,7 @@ jobs:
           # Bash linter & validator
           VALIDATE_BASH: true
           VALIDATE_BASH_EXEC: true
-	        # Linter for .env files - Uses https://github.com/dotenv-linter/dotenv-linter
+	  # Linter for .env files - Uses https://github.com/dotenv-linter/dotenv-linter
           VALIDATE_ENV: true
           # GitLeaks: discover secrets leaking - https://github.com/gitleaks/gitleaks?tab=readme-ov-file#configuration
           VALIDATE_GITLEAKS: true
