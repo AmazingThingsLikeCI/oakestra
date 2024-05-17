@@ -32,13 +32,13 @@ jobs:
           IGNORE_GITIGNORED_FILES: true
           VALIDATE_ALL_CODEBASE: true
           # FILTER_REGEX_EXCLUDE: .github/*
-          # LINTER_RULES_PATH: .github/linters_rules
+          LINTER_RULES_PATH: .github/linters_rules
           VALIDATE_PYTHON_BLACK: true
           # PYTHON_BLACK_CONFIG_FILE: # Injected settings in Flake8 and isort config
           VALIDATE_PYTHON_FLAKE8: true
-          # PYTHON_FLAKE8_CONFIG_FILE: .flake8
+          PYTHON_FLAKE8_CONFIG_FILE: .flake8
           VALIDATE_PYTHON_ISORT: true
-          # PYTHON_ISORT_CONFIG_FILE: .isort.cfg
+          PYTHON_ISORT_CONFIG_FILE: .isort.cfg
           # Shell formatter - Uses https://github.com/patrickvane/shfmt
           VALIDATE_SHELL_SHFMT: true # Cannot explicitly specify config files
           # Bash linter & validator
