@@ -32,7 +32,7 @@ jobs:
         uses: super-linter/super-linter@v6.5.0  # x-release-please-version
         env: # Refer https://github.com/marketplace/actions/super-linter#configure-super-linter
           MULTI_STATUS: true
-          LOG_LEVEL: DEBUG
+          LOG_LEVEL: INFO
           IGNORE_GITIGNORED_FILES: true
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_PYTHON_BLACK: true
