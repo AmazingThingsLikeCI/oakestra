@@ -35,6 +35,8 @@ jobs:
           LOG_LEVEL: INFO
           IGNORE_GITIGNORED_FILES: true
           VALIDATE_ALL_CODEBASE: true
+          FILTER_REGEX_EXCLUDE: .github/.*
+          LINTER_RULES_PATH: .github/linters_rules
           VALIDATE_PYTHON_BLACK: true
           # PYTHON_BLACK_CONFIG_FILE: 
           VALIDATE_PYTHON_FLAKE8: true
