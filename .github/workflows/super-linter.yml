@@ -30,7 +30,24 @@ jobs:
 
       - name: Super-linter
         uses: super-linter/super-linter@v6.5.0  # x-release-please-version
-        env:
-          # To report GitHub Actions status checks
+        env: # Refer https://github.com/marketplace/actions/super-linter#configure-super-linter
+          MULTI_STATUS: true
+          LOG_LEVEL: DEBUG
+          IGNORE_GITIGNORED_FILES: true
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_PYTHON_BLACK: true
+          # PYTHON_BLACK_CONFIG_FILE: 
+          VALIDATE_PYTHON_FLAKE8: true
+          # PYTHON_FLAKE8_CONFIG_FILE: 
+          VALIDATE_PYTHON_ISORT: true
+          # PYTHON_ISORT_CONFIG_FILE: 
+          VALIDATE_SHELL_SHFMT: true
+          VALIDATE_BASH: true
+          VALIDATE_BASH_EXEC: true
+          VALIDATE_YAML: true
+          VALIDATE_GO: true
+          VALIDATE_GO_MODULES: true
+          VALIDATE_ENV: true
+          VALIDATE_DOCKERFILE_HADOLINT: true
           GITHUB_TOKEN: ${{ secrets.LINTER_TOKEN }}
 ...
