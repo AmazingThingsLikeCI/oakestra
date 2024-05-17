@@ -46,8 +46,7 @@ jobs:
           DOCKERFILE_HADOLINT_FILE_NAME: .docker-hadolint.yaml
           # yamlint linter - https://yamllint.readthedocs.io/en/stable/configuration.html
           VALIDATE_YAML: true
-          # YAML_CONFIG_FILE: .yaml-lint.yml
-          #YAML_CONFIG_FILE: .yaml-lint.yml
+          YAML_CONFIG_FILE: .yaml-lint.yml
           # Bash linter & validator
           #VALIDATE_BASH: true
           #VALIDATE_BASH_EXEC: true
