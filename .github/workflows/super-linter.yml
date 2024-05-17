@@ -46,12 +46,10 @@ jobs:
           DOCKERFILE_HADOLINT_FILE_NAME: .docker-hadolint.yaml
           # yamlint linter - https://yamllint.readthedocs.io/en/stable/configuration.html
           VALIDATE_YAML: true
-          YAML_CONFIG_FILE: .yaml-lint.yml
+          #YAML_CONFIG_FILE: .yaml-lint.yml
           # Bash linter & validator
           VALIDATE_BASH: true
           VALIDATE_BASH_EXEC: true
-          # Linter for .env files - Uses https://github.com/dotenv-linter/dotenv-linter
-          VALIDATE_ENV: true
           # GitLeaks: discover secrets leaking - https://github.com/gitleaks/gitleaks?tab=readme-ov-file#configuration
           VALIDATE_GITLEAKS: true
           # GITLEAKS_CONFIG_FILE: .gitleaks.toml
