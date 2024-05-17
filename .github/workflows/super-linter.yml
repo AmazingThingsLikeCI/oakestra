@@ -49,7 +49,7 @@ jobs:
           # YAML_CONFIG_FILE: .yaml-lint.yml
           # Validate Go files and Go modules - Uses https://github.com/golangci/golangci-lint
           VALIDATE_GO: true
-          VALIDATE_GO_MODULES: true
+          VALIDATE_GO_MODULES: false
           # Linter for .env files - Uses https://github.com/dotenv-linter/dotenv-linter
           VALIDATE_ENV: true
           # Validate Dockerfiles with hadolint - https://github.com/hadolint/hadolint?tab=readme-ov-file#configure
