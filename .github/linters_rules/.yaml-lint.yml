@@ -1,27 +1,24 @@
 extends: default
 
+# Rules with adjusted levels based on potential issues
 rules:
-  braces:
-    level: warning
-    max-spaces-inside: 1
-  brackets:
-    level: warning
-    max-spaces-inside: 1
-  colons:
-    level: warning
-  commas:
-    level: warning
-  comments: disable
-  comments-indentation: disable
-  document-start: disable
-  empty-lines:
-    level: warning
-  hyphens:
-    level: warning
+  # Enforce consistent indentation (recommended)
   indentation:
     level: warning
     indent-sequences: consistent
+
+  # Line length checks with some relaxation (adjust as needed)
   line-length:
     level: warning
-    allow-non-breakable-inline-mappings: true
-  truthy: disable
+    max-length: 120 # Adjust this value based on your preference
+
+  # Allow apt-get usage in RUN instructions (depends on security context)
+  # Consider using alternatives like multi-stage builds for production
+  apt: enable
+
+  # Allow environment variable assignments (might be risky depending on source)
+  env: enable
+
+# Rules likely not relevant for this specific Dockerfile
+disabled_rules: empty-lines # Consider enabling for better readability
+
