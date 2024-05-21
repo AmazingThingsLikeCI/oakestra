@@ -33,7 +33,7 @@ jobs:
           # FILTER_REGEX_EXCLUDE: .github/*
           LINTER_RULES_PATH: .github/linters_rules
           VALIDATE_PYTHON_BLACK: true
-          PYTHON_BLACK_CONFIG_FILE: .isort.cfg # Injected settings in Flake8 and isort config
+          # PYTHON_BLACK_CONFIG_FILE: .isort.cfg # Injected settings in Flake8 and isort config
           VALIDATE_PYTHON_FLAKE8: true
           PYTHON_FLAKE8_CONFIG_FILE: .flake8
           VALIDATE_PYTHON_ISORT: true
