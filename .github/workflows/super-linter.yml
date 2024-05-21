@@ -1,56 +1,81 @@
 ---
+# Name of this workflow job
 name: Super-Linter Checks
 
-on: [push, pull_request]
+# When to run the workflow
+on:
+  # Run on push and pull request events
+  [ push, pull_request ]
 
+# Permissions required by the workflow
 permissions: { }
 
+# Define jobs within the workflow
 jobs:
   build:
-    name: Lint
+    # Job name displayed in the workflow UI
+    name: Linting Codebase & Configuration Files
+    # Operating system to run the job on
     runs-on: ubuntu-latest
 
+    # Permissions needed by the job within the workflow
     permissions:
-      contents: read
-      packages: read
-      # To report GitHub Actions status checks
-      statuses: write
+      contents: read  # Read access to code repository
+      packages: read  # Read access to package registry
+      statuses: write  # Write access to report GitHub Actions status checks
 
+    # Steps to be executed in the job
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          # super-linter needs the full git history to get the
-          # list of files that changed across commits
-          fetch-depth: 0
+          # Fetch entire git history for super-linter
+          fetch-depth: 0  # Retrieve all commits
 
       - name: Super-linter
         uses: super-linter/super-linter@v6.5.0  # x-release-please-version
         env:
+          # Report status checks for each linter
           MULTI_STATUS: true
+          # Log level for super-linter output (INFO, DEBUG, etc.)
           LOG_LEVEL: INFO
+          # Include ignored files in the linting process
           IGNORE_GITIGNORED_FILES: true
+          # Example: Exclude specific directory from linting
           # FILTER_REGEX_EXCLUDE: .github/*
+          # Path to custom linter rules configuration file
           LINTER_RULES_PATH: .github/linters_rules
+          # Validate Python code style with black
           VALIDATE_PYTHON_BLACK: true
-          # PYTHON_BLACK_CONFIG_FILE: .isort.cfg # Injected settings in Flake8 and isort config
+          # (Optional) Path to black configuration file (can be injected)
+          PYTHON_BLACK_CONFIG_FILE: .isort.cfg
+          # Validate Python code style with flake8
           VALIDATE_PYTHON_FLAKE8: true
+          # Path to flake8 configuration file
           PYTHON_FLAKE8_CONFIG_FILE: .flake8
+          # Validate Python import sorting with isort
           VALIDATE_PYTHON_ISORT: true
+          # Path to isort configuration file
           PYTHON_ISORT_CONFIG_FILE: .isort.cfg
+          # Validate all code in the codebase
           VALIDATE_ALL_CODEBASE: true
-          # Validate Go files and Go modules - Uses https://github.com/golangci/golangci-lint
+          # Validate Go files and modules with golangci-lint
           VALIDATE_GO_MODULES: true
-          # Validate Dockerfiles with hadolint - https://github.com/hadolint/hadolint?tab=readme-ov-file#configure
+          # Validate Dockerfiles with hadolint
           VALIDATE_DOCKERFILE_HADOLINT: true
+          # Path to hadolint configuration file
           DOCKERFILE_HADOLINT_FILE_NAME: .docker-hadolint.yaml
-          # yamlint linter - https://yamllint.readthedocs.io/en/stable/configuration.html
+          # Validate YAML files with yamllint
           VALIDATE_YAML: true
+          # Path to yamllint configuration file
           YAML_CONFIG_FILE: .yaml-lint.yml
-          # Bash linter & validator
+          # Validate Bash scripts
           VALIDATE_BASH: true
-          #VALIDATE_BASH_EXEC: true
-          # GitLeaks: discover secrets leaking - https://github.com/gitleaks/gitleaks?tab=readme-ov-file#configuration
+          # (Optional) Validate execution of Bash scripts (more strict)
+          # VALIDATE_BASH_EXEC: true
+          # Validate for secret leaks with GitLeaks
           VALIDATE_GITLEAKS: true
-          # GITLEAKS_CONFIG_FILE: .gitleaks.toml # https://github.com/gitleaks/gitleaks#configuration
-          GITHUB_TOKEN: ${{ secrets.LINTER_TOKEN }}
+          # (Optional) Path to GitLeaks configuration file
+          # GITLEAKS_CONFIG_FILE: .gitleaks.toml
+          # Access token for interacting with GitHub Actions (set as secret)
+          GITHUB_TOKEN: ${{ secrets.LINTER_TOKEN }}"
